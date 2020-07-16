@@ -18,10 +18,10 @@ export default {
       meta: { title: '生成 MD5' }
     },
     {
-      path: 'getInformation',
-      component: () => import('@/views/tool/getInformation'),
-      name: 'GetInformation',
-      meta: { title: 'GetInformation' }
+      path: 'xml-to-excel',
+      component: () => import('@/views/tool/xml-to-excel'),
+      name: '',
+      meta: { title: 'XML 转 EXCEL' }
     }
   ]
 }

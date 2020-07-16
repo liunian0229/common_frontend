@@ -36,7 +36,21 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    // before: require('./mock/mock-server.js')
+    /**
+     * 使用代理来解决请求远程服务器
+     * @see https://www.jianshu.com/p/f489e7764cb8
+     */
+    proxy: {
+      [process.env.VUE_APP_BASE_API]: {
+        target: 'http://localhost:10000',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
