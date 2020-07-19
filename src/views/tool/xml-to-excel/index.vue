@@ -3,7 +3,7 @@
   <el-upload
     class="upload-demo"
     drag
-    @file="onFile"
+    :action="action"
     accept=".xml"
     multiple
   >
@@ -26,11 +26,17 @@ export default {
     }
   },
 
+  computed: {
+    action () {
+      return process.env.VUE_APP_BASE_API + '/xmlToExcel'
+    }
+  },
+
   methods: {
     onFile(file) {
-        xmltoExcel(this.file).then(resp => {
-          this.data.file = resp.data.data
-        })
+      xmltoExcel(this.file).then(resp => {
+        this.data.file = resp.data.data
+      })
     }
   }
 }
